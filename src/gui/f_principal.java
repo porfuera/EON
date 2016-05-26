@@ -39,7 +39,7 @@ public class f_principal extends JFrame{
     m_principal m_principal;
     
     
-     f_principal(){
+    public f_principal(){
         setLayout(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 30, 30); 
         AWTUtilities.setWindowShape(this, forma)  ; 
