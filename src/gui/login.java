@@ -36,7 +36,7 @@ public class login extends javax.swing.JDialog {
      */
     public login(java.awt.Frame parent, boolean modal) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         super(parent, modal);
-        this.principal = new f_principal();
+        this.principal = new Principal();
         
         initComponents();
         
