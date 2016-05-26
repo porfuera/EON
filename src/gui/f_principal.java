@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.frames;
+package gui;
 import com.sun.awt.AWTUtilities; 
 import java.awt.Shape; 
 import java.awt.geom.RoundRectangle2D; 
@@ -36,15 +36,16 @@ public class f_principal extends JFrame{
     String  titulo_ventana ,bt_letra,btn_cerrar_inactivo,btn_cerrar_activo,btn_min_inactivo,btn_min_activo,btn_bloq_inactivo,btn_bloq_activo;
     String  btn_cerrar_tooltip,btn_min_tooltip,btn_bloq_tooltip;
     Font    fuente_titulo  ;
-    menu_principal m_principal;
+    m_principal m_principal;
     
     
-      f_principal(){
+     f_principal(){
         setLayout(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 30, 30); 
         AWTUtilities.setWindowShape(this, forma)  ; 
         diseño();
         propiedades();
+        resize();
         this.add(boton_bloquear);
         this.add(boton_minimizar);
         this.add(boton_salir);
@@ -53,7 +54,7 @@ public class f_principal extends JFrame{
         this.add(fondo);
     }
     
-    private abstract class MouseAdapter implements MouseListener {
+  private abstract class MouseAdapter implements MouseListener {
       
     public void mouseClicked(MouseEvent e) {}
     public void mousePressed(MouseEvent e) {
@@ -136,7 +137,7 @@ public class f_principal extends JFrame{
         barra_titulo.setForeground(bt_color_fuente); 
         barra_titulo.setFont(fuente_titulo);
         barra_titulo.setFocusable(false);
-        m_principal=new menu_principal();
+        m_principal=new m_principal();
         m_principal.setAlignmentX(SwingConstants.CENTER);
         boton_salir =     new JLabel();
         boton_salir.setVisible(true);
@@ -171,7 +172,6 @@ public class f_principal extends JFrame{
         fondo.setVisible(true);
         fondo.setBounds(0, 0, pantalla.width, pantalla.height);
   }
-  
   public void resize(){
       barra_titulo.setBounds(0, 0, pantalla.width, 35);
       boton_salir.setBounds(pantalla.width - 35, 0, 30, 30);

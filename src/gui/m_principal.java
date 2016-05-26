@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.menus;
+package gui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -33,19 +33,19 @@ import javax.swing.border.LineBorder;
  *
  * @author Fam
  */
-public class m_principal {
+public class m_principal  extends JPanel{
     public Toolkit t = Toolkit.getDefaultToolkit();
     public Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     FlowLayout mimenu;
     JPanel p_archivo,p_catalogos,menu;
     JLabel fondo_menu,m1_archivo,m1_sb1_configuracion,m2_catalogos,m2_sb1_marcas,m2_sb2_tiposart,m2_sb3_ubicaciones;
     Font  fuente_menu  =   new Font("Tahoma", Font.BOLD, 16);
-    Color color_fuente,color_fondo,color_fentered;
-    Color color_borde=new Color(6,102,76);
-    Color color_bentered=new Color(29,138,109);
+    Color color_fuente,color_fondo,color_fentered,color_bentered,color_borde;
     int m_fondo_r,m_fondo_g,m_fondo_b,m_fuente_r,m_fuente_g,m_fuente_b,m_fentered_r,m_fentered_g,m_fentered_b;
+    int m_bentered_r,m_bentered_g,m_bentered_b,m_borde_r,m_borde_g,m_borde_b,m_letra_tamaño;
+    String m_letra;
     javax.swing.border.Border border = BorderFactory.createLineBorder(color_borde, 2);
-    ResourceBundle rb = ResourceBundle.getBundle("configuracion.diseño");
+    ResourceBundle rb = ResourceBundle.getBundle("config.diseño");
     
     public m_principal(){
         
@@ -68,17 +68,20 @@ public class m_principal {
         m_bentered_g = Integer.parseInt(rb.getString("mp_bentered_g"));
         m_bentered_b = Integer.parseInt(rb.getString("mp_bentered_b"));
         color_bentered = new Color(m_fentered_r,m_fentered_g,m_fentered_b);
-        bt_letra = rb.getString("bt_letra");
-        bt_letra_tamaño =Integer.parseInt(rb.getString("bt_letra_tamaño"));
-        fuente_titulo =   new Font(bt_letra, Font.BOLD + Font.ITALIC, bt_letra_tamaño);
-        btn_cerrar_inactivo = rb.getString("btn_cerrar_inactivo");
-        btn_cerrar_activo = rb.getString("btn_cerrar_activo");
-        btn_min_inactivo = rb.getString("btn_min_inactivo");
-        btn_min_activo = rb.getString("btn_min_activo");
-        btn_bloq_inactivo = rb.getString("btn_bloq_inactivo");
-        btn_bloq_activo = rb.getString("btn_bloq_activo");
-        btn_cerrar_tooltip=rb.getString("btn_cerrar_tooltip");
-        btn_min_tooltip=rb.getString("btn_min_tooltip");
-        btn_bloq_tooltip=rb.getString("btn_bloq_tooltip");
+        m_borde_r = Integer.parseInt(rb.getString("mp_bentered_r"));
+        m_borde_g = Integer.parseInt(rb.getString("mp_bentered_g"));
+        m_borde_b = Integer.parseInt(rb.getString("mp_bentered_b"));
+        color_borde = new Color(m_borde_r,m_borde_g,m_borde_b);  
+        m_letra = rb.getString("mp_letra");
+        m_letra_tamaño =Integer.parseInt(rb.getString("mp_letra_tamaño"));
   }
+     public void propiedades(){
+        fondo_menu=new JLabel();
+        fondo_menu.setBounds(0,0, 250, (int) pantalla.getHeight());
+        fondo_menu.setBackground(color_fondo); 
+        fondo_menu.setOpaque(true);
+        fondo_menu.setBorder(border);
+        fondo_menu.setVisible(true);
+     }
+     
 }
