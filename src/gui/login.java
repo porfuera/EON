@@ -220,7 +220,7 @@ public class login extends javax.swing.JDialog {
         }else{
             
             principal.setVisible( true );
-            principal.setManejadorBD( manejadorBD );
+    //        principal.setManejadorBD( manejadorBD );
             setVisible( false );
         }
                 
@@ -236,7 +236,7 @@ public class login extends javax.swing.JDialog {
     private boolean error = false;
     private int accesos;
     
-    private final Principal principal;
+    private final f_principal principal;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contraseña;

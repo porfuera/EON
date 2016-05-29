@@ -31,7 +31,7 @@ public class f_principal extends JFrame{
     public Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     JLabel  barra_titulo,boton_salir,boton_minimizar,boton_bloquear,fondo;
     int bt_fondo_r,bt_fonfo_g,bt_fondo_b,bt_fuente_r,bt_fuente_g,bt_fuente_b,bt_letra_tamaño;
-    ResourceBundle rb = ResourceBundle.getBundle("configuracion.diseño");
+    ResourceBundle rb = ResourceBundle.getBundle("config.diseño");
     Color   bt_color_fondo,bt_color_fuente;
     String  titulo_ventana ,bt_letra,btn_cerrar_inactivo,btn_cerrar_activo,btn_min_inactivo,btn_min_activo,btn_bloq_inactivo,btn_bloq_activo;
     String  btn_cerrar_tooltip,btn_min_tooltip,btn_bloq_tooltip;
@@ -40,18 +40,21 @@ public class f_principal extends JFrame{
     
     
     public f_principal(){
+        setUndecorated(true) ; 
         setLayout(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 30, 30); 
         AWTUtilities.setWindowShape(this, forma)  ; 
         diseño();
         propiedades();
-        resize();
         this.add(boton_bloquear);
         this.add(boton_minimizar);
         this.add(boton_salir);
         this.add(m_principal);
         this.add(barra_titulo);
         this.add(fondo);
+        
+        this.setVisible(false);
+        this.setSize(pantalla.width, pantalla.height);
     }
     
   private abstract class MouseAdapter implements MouseListener {
@@ -130,6 +133,7 @@ public class f_principal extends JFrame{
   public void propiedades(){
         MouseAdapter raton=new MouseAdapter() {};
         barra_titulo    =   new JLabel();
+        barra_titulo.setBounds(0, 0, pantalla.width, 35);
         barra_titulo.setBackground(bt_color_fondo); 
         barra_titulo.setVisible(true);
         barra_titulo.setOpaque(true);
@@ -139,7 +143,9 @@ public class f_principal extends JFrame{
         barra_titulo.setFocusable(false);
         m_principal=new m_principal();
         m_principal.setAlignmentX(SwingConstants.CENTER);
+        m_principal.setBounds(0, 35, m_principal.getWidth(), m_principal.getHeight());
         boton_salir =     new JLabel();
+        boton_salir.setBounds(pantalla.width - 35, 0, 30, 30);
         boton_salir.setVisible(true);
         boton_salir.setFocusable(false);
         ImageIcon icon_salir=new ImageIcon(btn_cerrar_inactivo);
@@ -149,6 +155,7 @@ public class f_principal extends JFrame{
         boton_salir.setBackground(bt_color_fondo); 
         boton_salir.addMouseListener(raton);
         boton_minimizar =     new JLabel();
+        boton_minimizar.setBounds(pantalla.width - 70, 0, 30, 30);
         boton_minimizar.setVisible(true);
         boton_minimizar.setFocusable(false);
         ImageIcon icon_min=new ImageIcon(btn_min_inactivo);
@@ -158,6 +165,7 @@ public class f_principal extends JFrame{
         boton_minimizar.setBackground(bt_color_fondo); 
         boton_minimizar.addMouseListener(raton);
         boton_bloquear =     new JLabel();
+        boton_bloquear.setBounds(pantalla.width - 105, 0, 30, 30);
         boton_bloquear.setVisible(true);
         boton_bloquear.setFocusable(false);
         ImageIcon icon_bloq=new ImageIcon(btn_bloq_inactivo);
@@ -172,11 +180,5 @@ public class f_principal extends JFrame{
         fondo.setVisible(true);
         fondo.setBounds(0, 0, pantalla.width, pantalla.height);
   }
-  public void resize(){
-      barra_titulo.setBounds(0, 0, pantalla.width, 35);
-      boton_salir.setBounds(pantalla.width - 35, 0, 30, 30);
-      boton_minimizar.setBounds(pantalla.width - 70, 0, 30, 30);
-      boton_bloquear.setBounds(pantalla.width - 105, 0, 30, 30);
-      m_principal.setBounds(0, 35, m_principal.getWidth(), m_principal.getHeight());
-  }
+ 
 }
