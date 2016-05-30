@@ -46,6 +46,7 @@ public class m_principal  extends JPanel{
     String m_letra;
     javax.swing.border.Border border ;
     ResourceBundle rb = ResourceBundle.getBundle("config.diseño");
+    boolean presionom1=false,presionom2=false;
     
     public m_principal(){
         m_ancho=Integer.parseInt(rb.getString("mp_ancho"));
@@ -55,7 +56,8 @@ public class m_principal  extends JPanel{
         menu.setBounds(0,0, m_ancho, 500);
         menu.setOpaque(false);
         menu.setLayout(new BoxLayout(menu,BoxLayout.Y_AXIS));
-        
+        presionom1=false;
+        presionom2=false;
         p_archivo = new JPanel();
         p_archivo.setLayout(new BoxLayout(p_archivo,BoxLayout.Y_AXIS));
         p_archivo.add(m1_archivo);
@@ -185,9 +187,15 @@ public class m_principal  extends JPanel{
             if (p_archivo.getBorder() == null ){
                 p_archivo.add(m1_sb1_configuracion);
                 p_archivo.setBorder(border);
+                m1_archivo.setBackground(color_bentered); 
+                m1_archivo.setForeground(color_fentered);
+                presionom1=true;
             }else{
                 p_archivo.remove(m1_sb1_configuracion);
                 p_archivo.setBorder(null);
+                m1_archivo.setBackground(color_fondo); 
+                m1_archivo.setForeground(color_fuente);
+                presionom1=false;
             }    
         }
         if (e.getSource() == m2_catalogos ){
@@ -196,11 +204,17 @@ public class m_principal  extends JPanel{
                 p_catalogos.add(m2_sb2_tiposart);
                 p_catalogos.add(m2_sb3_ubicaciones);
                 p_catalogos.setBorder(border);
+                m2_catalogos.setBackground(color_bentered); 
+                m2_catalogos.setForeground(color_fentered);
+                presionom2=true;
             }else{
                 p_catalogos.remove(m2_sb1_marcas);
                 p_catalogos.remove(m2_sb2_tiposart);
                 p_catalogos.remove(m2_sb3_ubicaciones);
                 p_catalogos.setBorder(null);
+                m2_catalogos.setBackground(color_fondo); 
+                m2_catalogos.setForeground(color_fuente);
+                presionom2=false;
             }    
         }}
         public void mousePressed(MouseEvent e) {
@@ -219,12 +233,16 @@ public class m_principal  extends JPanel{
     }
     public void mouseExited(MouseEvent e) {
         if (e.getSource() == m1_archivo ){
+            if(presionom1=false){
             m1_archivo.setBackground(color_fondo); 
             m1_archivo.setForeground(color_fuente);
+            }
         }
         if (e.getSource() == m2_catalogos ){
+            if(presionom2=false){
             m2_catalogos.setBackground(color_fondo); 
             m2_catalogos.setForeground(color_fuente);
+            }
         }
     }   
 }   
