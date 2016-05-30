@@ -233,13 +233,13 @@ public class m_principal  extends JPanel{
     }
     public void mouseExited(MouseEvent e) {
         if (e.getSource() == m1_archivo ){
-            if(presionom1=false){
+            if(presionom1==false){
             m1_archivo.setBackground(color_fondo); 
             m1_archivo.setForeground(color_fuente);
             }
         }
         if (e.getSource() == m2_catalogos ){
-            if(presionom2=false){
+            if(presionom2==false){
             m2_catalogos.setBackground(color_fondo); 
             m2_catalogos.setForeground(color_fuente);
             }
